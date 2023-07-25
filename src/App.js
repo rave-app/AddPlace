@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { HashRouter, Route, Routes, Navigate } from 'react-router-dom';
+import Home from './Components/Home';
+import Login from './Components/Login';
 
-function App() {
+const App = () => {
+  const [state,setState] = useState({
+    token: localStorage.getItem("token"),
+    id: localStorage.getItem("id")
+  }
+    )
+  const setAuth = (token,id) => {
+    const newState = {...state}
+    localStorage.setItem("token",token)
+    localStorage.setItem("id",id)
+    newState.token = token
+    newState.id = id
+    setState(newState)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={state.token ? <Home token={state.token} id={state.id}/> : <Navigate to="/login"/>}/>
+        <Route path="/login" element={<Login setAuth={setAuth}/>}/>
+      </Routes>
+    </HashRouter>
+  )
 }
 
-export default App;
+export default App

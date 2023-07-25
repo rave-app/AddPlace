@@ -5,9 +5,103 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+}
+
+.login-input {
+  background-color: black;
+  border: none;
+  border-bottom: 0.5px #46454b solid;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 250px;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  padding-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  flex: 1 1 0;
+}
+
+.login-btn {
+  flex: 1 1 0;
+  background-color: #232224;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  font-weight: bolder;
+  color: rgb(161, 161, 161);
+}
+
+.login-btn:hover {
+  background-color: #111111;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #46454b;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #46454b;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #46454b;
+}
+
+.placerow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.placerow-name-container {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placerow-name {
+
+  color: white;
+}
+
+.placerow-img-container {
+  flex: 0.3 0.3 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placerow-img {
+  border-radius: 100%;
 }
