@@ -142,6 +142,7 @@ code {
   align-items: center;
   flex-direction: column;
   row-gap: 10px;
+  margin-bottom: 150px;
 }
 
 .add-flex-row {
@@ -180,3 +181,18 @@ code {
   margin-right: auto;
   flex: 1 1 0;
 }
+
+.add-select {
+  width: 200px;
+  outline: none;
+  border: none;
+  background-color: black;
+  color: #898989;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.add-warning {
+  color: white;
+}
+
