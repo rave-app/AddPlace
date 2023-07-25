@@ -1,6 +1,6 @@
 {
   "name": "rave-add-restaurant",
-  "homepage":"https://rave-app.github.io/addplace",
+  "homepage":"https://rave-app.github.io/AddPlace/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
