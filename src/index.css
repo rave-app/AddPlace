@@ -64,16 +64,16 @@ code {
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #46454b;
+  color: #898989;
   opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #46454b;
+  color: #898989;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-  color: #46454b;
+  color: #898989;
 }
 
 .placerow-container {
@@ -104,4 +104,79 @@ code {
 
 .placerow-img {
   border-radius: 100%;
+}
+
+.header {
+  height: 100px;
+}
+
+.header-text {
+  color: white;
+  text-align: center;
+  font-size: 48px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.header-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-link {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  flex: 1 1 0;
+  cursor: default;
+}
+
+.header-link:hover {
+  color: #46454b;
+}
+
+.add-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.add-flex-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  column-gap: 10px;
+}
+
+.add-btn {
+  flex: 0.3 0.3 0;
+  background-color: #232224;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  font-weight: bolder;
+  color: rgb(161, 161, 161);
+}
+
+.add-input {
+  background-color: black;
+  border: none;
+  border-bottom: 0.5px #898989 solid;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 250px;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  padding-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  flex: 1 1 0;
 }

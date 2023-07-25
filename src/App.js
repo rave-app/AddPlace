@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { HashRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './Components/Home';
 import Login from './Components/Login';
+import AddPlace from './Components/AddPlace';
 
 const App = () => {
   const [state,setState] = useState({
@@ -23,6 +24,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={state.token ? <Home token={state.token} id={state.id}/> : <Navigate to="/login"/>}/>
         <Route path="/login" element={<Login setAuth={setAuth}/>}/>
+        <Route path="/addplace" element={<AddPlace token={state.token} id={state.id}/>}/>
       </Routes>
     </HashRouter>
   )

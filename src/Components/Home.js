@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { callAPI } from '../Functions/useAPI'
 import PlaceRow from './PlaceRow'
+import { Link } from 'react-router-dom'
 
 const Home = ({token,id}) => {
   const [places,setPlaces] = useState(null)
@@ -24,6 +25,22 @@ const Home = ({token,id}) => {
   },[])
   return (
     <div>
+      <div className="header">
+        <h2 className="header-text">
+            Rave
+        </h2>
+        <div className="header-links">
+          <Link className="header-link" to="/">
+            Home
+          </Link>
+          <Link className="header-link" to="/addplace">
+            Add Place
+          </Link>
+          <Link className="header-link" to="/logout">
+            Log Out
+          </Link>
+        </div>
+        </div>
       {places && places.map((place) => <PlaceRow img={place.profile_picture} name={place.name} address={place.address}/>)}
     </div>
   )
