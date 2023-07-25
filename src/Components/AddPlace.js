@@ -7,18 +7,18 @@ const resizeFile = (file,setImage) =>
   new Promise((resolve) => {
     Resizer.imageFileResizer(
       file,
-      200,
-      200,
-      "JPEG",
       100,
+      100,
+      "JPEG",
+      50,
       0,
       (uri) => {
         setImage(uri);
         resolve(uri);
       },
       "base64",
-      200,
-      200,
+      100,
+      100,
     );
   });
 
