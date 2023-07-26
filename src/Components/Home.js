@@ -13,7 +13,11 @@ const Home = ({token,id}) => {
     try {
     const json = await callAPI("https://rave-app-0dc38f75026c.herokuapp.com/allplaces","PUT",body)
     if(json.error === -1) {
-      setPlaces(json.places)
+      const newArr = [...json.places]
+      newArr.sort((a,b) => {
+        return a.name.localeCompare(b.name)
+      })
+      setPlaces(newArr)
     }
     console.log(json)
     } catch(error) {
@@ -41,6 +45,7 @@ const Home = ({token,id}) => {
           </Link>
         </div>
         </div>
+      {places && <h2 style={{color:"white",textAlign:"center"}}>{places.length} places and counting</h2>}
       {places && places.map((place) => <PlaceRow img={place.profile_picture} name={place.name} address={place.address}/>)}
     </div>
   )

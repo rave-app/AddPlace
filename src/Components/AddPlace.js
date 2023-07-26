@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { callAPI } from "../Functions/useAPI"
-import Resizer from "react-image-file-resizer";
 
-const resizeFile = (file,setImage) =>
-  new Promise((resolve) => {
-    Resizer.imageFileResizer(
-      file,
-      100,
-      100,
-      "JPEG",
-      50,
-      0,
-      (uri) => {
-        setImage(uri);
-        resolve(uri);
-      },
-      "base64",
-      100,
-      100,
-    );
-  });
+const getBase64 = (file) => {
+    return new Promise(resolve => {
+      let fileInfo;
+      let baseURL = "";
+      // Make new FileReader
+      let reader = new FileReader();
+
+      // Convert the file to base64 text
+      reader.readAsDataURL(file);
+
+      // on reader load somthing...
+      reader.onload = () => {
+        // Make a fileInfo Object
+        console.log("Called", reader);
+        baseURL = reader.result;
+        console.log(baseURL);
+        resolve(baseURL);
+      };
+      console.log(fileInfo);
+    });
+  };
 
 const AddPlace = ({token,id}) => {
     const [state,setState] = useState({
@@ -33,6 +35,8 @@ const AddPlace = ({token,id}) => {
         address : null,
         coords: [null,null]
     })
+    const [base64,setBase64] = useState(null)
+    const [file,setFile] = useState(null)
     const navigate = useNavigate()
     const attemptAddPlace = async() => {
         const newHours = []
@@ -47,7 +51,7 @@ const AddPlace = ({token,id}) => {
             token:token,
             id:id,
             address:state.address,
-            profile_picture:base64,
+            profile_picture: base64.substr(base64.indexOf(",")+1),
             hours:newHours,
             type:state.type,
             website:state.website,
@@ -58,13 +62,9 @@ const AddPlace = ({token,id}) => {
             navigate("/")
         }
     }
-    const [image,setImage] = useState(null)
-    const [base64,setBase64] = useState(null)
-    const [file,setFile] = useState(null)
     const loadFile = async() => {
         if(file) {
-            let newB64 = await resizeFile(file,setImage)
-            newB64 = newB64.substr(newB64.indexOf(",")+1)
+            let newB64 = await getBase64(file)
             setBase64(newB64);
         }
     }
@@ -125,6 +125,8 @@ const AddPlace = ({token,id}) => {
                     newState.warning = "More than 7 days of hours provided by yelp. Restaurant likely opens for lunch and dinner on certain days -- refer to website."
                 }
                 setState(newState)
+            } else {
+                console.log(json)
             }
         } catch(error) {
             console.error(error)
@@ -150,7 +152,7 @@ const AddPlace = ({token,id}) => {
         </div>
         <form className="add-form">
             <div className="add-flex-row">
-            {image && <img src={image}/>}
+            {base64 && <img src={base64}/>}
             </div>
             <div className="add-flex-row">
             <input className="add-select" type="file" accept=".jpeg, .png, .jpg" onChange={(e) => setFile(e.target.files[0])}/>
